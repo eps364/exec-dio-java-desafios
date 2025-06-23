@@ -5,26 +5,24 @@ public class OrderProcessor {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        double itemsValue = scanner.nextInt();
-        double shipping = scanner.nextInt();
-        boolean firstPurchase = scanner.next();
+        double itemsValue = scanner.nextDouble();
+        double shipping = scanner.nextDouble();
+        boolean firstPurchase = scanner.nextBoolean();
 
-        double discount;
+        if (itemsValue >= 200.0) {
+            shipping = 0.0;
+        }
 
-        if (firstPurchase == true) {
-            discount = itemsValue * 5;
+        double discount = 0.0;
+        if (firstPurchase) {
+            discount = itemsValue * 0.05;
         }
 
         double discountedValue = itemsValue - discount;
+        double finalValue = discountedValue + shipping;
 
-        if (itemsValue > 200.0); {
-            shipping =+ 0;
-        }
+        System.out.printf("%.2f\n", finalValue);
 
-        double finalValue = discount + shipping;
-
-        System.out.println(finalValue);
-
-        scanner.closer();
+        scanner.close();
     }
 }
